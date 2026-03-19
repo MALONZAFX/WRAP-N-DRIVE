@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wrap N Drive — Kenya's Premier Vehicle Wrap Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#0A0A0A;
+  --ink2:#141414;
+  --ink3:#1E1E1E;
+  --mid:#555;
+  --dim:#888;
+  --rule:#2A2A2A;
+  --rule-lt:#E8E4DF;
+  --paper:#F7F5F1;
+  --paper2:#EEEAE4;
+  --white:#FFFFFF;
+  --red:#CC2222;
+  --red-dim:#9A1515;
+  --red-tint:rgba(204,34,34,0.08);
+  --gold:#C8A94A;
+  --green:#1A7A42;
+  --accent:#E03020;
+  --ff-disp:'Cormorant Garamond',serif;
+  --ff-body:'Outfit',sans-serif;
+  --ff-mono:'DM Mono',monospace;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-body);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+input,select,textarea,button{font-family:var(--ff-body);}
+select{-webkit-appearance:none;appearance:none;}
+button{cursor:pointer;}
+
+/* ─── LOADER ─── */
+#loader{position:fixed;inset:0;background:var(--ink);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s var(--ease),visibility .6s;}
+#loader.off{opacity:0;visibility:hidden;pointer-events:none;}
+.ld-inner{text-align:center;}
+.ld-mark{font-family:var(--ff-disp);font-size:4rem;font-weight:700;letter-spacing:-.5px;line-height:1;}
+.ld-mark span{color:var(--red);}
+.ld-sub{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.4em;color:var(--dim);margin-top:6px;text-transform:uppercase;}
+.ld-bar{width:120px;height:1px;background:var(--rule);margin:28px auto 0;overflow:hidden;}
+.ld-fill{height:100%;width:0;background:var(--red);animation:ldFill 2s var(--ease) forwards;}
+@keyframes ldFill{to{width:100%;}}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid transparent;transition:all .3s var(--ease);}
+nav.stuck{background:rgba(10,10,10,.96);backdrop-filter:blur(16px);border-color:var(--rule);}
+.nav-logo{font-family:var(--ff-disp);font-size:1.35rem;font-weight:700;letter-spacing:.02em;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;list-style:none;gap:32px;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-r{display:flex;align-items:center;gap:16px;}
+.nav-tel{font-family:var(--ff-mono);font-size:.68rem;color:var(--dim);letter-spacing:.04em;}
+.nav-btn{background:var(--red);color:var(--white);border:none;padding:8px 20px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
+.nav-btn:hover{background:var(--red-dim);}
+.nav-ghost{background:transparent;color:rgba(255,255,255,.4);border:1px solid var(--rule);padding:7px 16px;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:all .2s;}
+.nav-ghost:hover{border-color:rgba(255,255,255,.3);color:var(--white);}
+.hbg{display:none;flex-direction:column;gap:5px;padding:4px;}
+.hbg span{display:block;width:20px;height:1.5px;background:var(--white);transition:.2s;}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--ink2);border-bottom:1px solid var(--rule);z-index:800;padding:20px 32px 28px;}
+.mob-menu.on{display:block;}
+.mob-menu ul{list-style:none;}
+.mob-menu li{border-bottom:1px solid var(--rule);}
+.mob-menu a{display:block;padding:13px 0;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:64px;}
+.hero-l{padding:80px 64px 80px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.hero-r{position:relative;overflow:hidden;}
+.hero-r img{width:100%;height:100%;object-fit:cover;filter:brightness(.82);}
+.hero-r::after{content:'';position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(90deg,var(--ink),transparent);}
+.hero-flag{font-family:var(--ff-mono);font-size:.58rem;letter-spacing:.35em;color:var(--dim);text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+.hero-flag::before{content:'';display:block;width:28px;height:1px;background:var(--red);}
+h1.hero-h{font-family:var(--ff-disp);font-size:clamp(3.5rem,6vw,6.5rem);font-weight:700;line-height:.92;letter-spacing:-.03em;}
+h1.hero-h .it{font-style:italic;color:rgba(255,255,255,.45);}
+h1.hero-h .rd{color:var(--red);}
+.hero-body{font-size:.88rem;color:var(--dim);line-height:1.8;margin-top:28px;max-width:360px;font-weight:300;}
+.hero-btns{display:flex;gap:12px;margin-top:36px;}
+.btn-solid{background:var(--red);color:var(--white);border:none;padding:13px 28px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
+.btn-solid:hover{background:var(--red-dim);}
+.btn-line{background:transparent;color:rgba(255,255,255,.65);border:1px solid var(--rule);padding:12px 24px;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:all .2s;}
+.btn-line:hover{border-color:rgba(255,255,255,.4);color:var(--white);}
+.hero-stats{display:flex;gap:0;margin-top:60px;padding-top:36px;border-top:1px solid var(--rule);}
+.hstat{flex:1;padding-right:32px;}
+.hstat+.hstat{padding-left:32px;border-left:1px solid var(--rule);}
+.hstat-n{font-family:var(--ff-disp);font-size:2.4rem;font-weight:700;line-height:1;color:var(--white);}
+.hstat-l{font-size:.65rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;font-family:var(--ff-mono);}
+.hero-badge-overlay{position:absolute;bottom:32px;left:32px;z-index:3;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);border:1px solid var(--rule);padding:16px 20px;border-left:2px solid var(--red);}
+.hbo-label{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;}
+.hbo-val{font-family:var(--ff-disp);font-size:1.05rem;font-weight:600;margin-top:4px;}
+.hero-thumbs-v{position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:8px;}
+.hero-thumbs-v img{width:64px;height:46px;object-fit:cover;border-radius:2px;opacity:.45;cursor:pointer;border:1.5px solid transparent;transition:all .2s;}
+.hero-thumbs-v img.on{opacity:1;border-color:var(--red);}
+
+/* TICKER */
+.ticker{background:var(--ink2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:hidden;padding:10px 0;}
+.ticker-track{display:inline-flex;white-space:nowrap;animation:tick 40s linear infinite;font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;}
+.ticker-track .sep{color:var(--red);margin:0 20px;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SEARCH / QUOTE BAND ─── */
+.search-band{background:var(--ink2);border-bottom:1px solid var(--rule);padding:32px 48px;}
+.search-inner{max-width:1200px;margin:0 auto;}
+.search-label{font-family:var(--ff-mono);font-size:.56rem;letter-spacing:.35em;color:var(--dim);text-transform:uppercase;display:block;margin-bottom:14px;}
+.search-row{display:flex;gap:8px;flex-wrap:wrap;}
+.s-sel{flex:1;min-width:140px;background:var(--ink3);border:1px solid var(--rule);color:rgba(255,255,255,.75);padding:11px 14px;font-size:.8rem;font-weight:400;border-radius:2px;transition:border-color .2s;}
+.s-sel:focus{outline:none;border-color:var(--red);}
+.s-sel option{background:var(--ink2);}
+.btn-search{background:var(--white);color:var(--ink);border:none;padding:11px 28px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .2s;white-space:nowrap;}
+.btn-search:hover{background:var(--red);color:var(--white);}
+
+/* ─── SECTIONS ─── */
+.section{padding:88px 48px;}
+.section.alt{background:var(--ink2);}
+.section.paper{background:var(--paper);color:var(--ink);}
+.section.paper .dim-text{color:var(--mid);}
+.sec-inner{max-width:1240px;margin:0 auto;}
+.sec-hd{margin-bottom:52px;}
+.sec-hd.center{text-align:center;}
+.eyebrow{font-family:var(--ff-mono);font-size:.56rem;letter-spacing:.4em;color:var(--red);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.eyebrow.center{justify-content:center;}
+.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--red);}
+.eyebrow.center::before{display:none;}
+h2.sec-title{font-family:var(--ff-disp);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;}
+h2.sec-title .it{font-style:italic;}
+h2.sec-title .rd{color:var(--red);}
+h2.sec-title.on-paper{color:var(--ink);}
+.sec-sub{font-size:.85rem;color:var(--dim);margin-top:10px;font-weight:300;max-width:460px;}
+.sec-hd.center .sec-sub{margin:10px auto 0;}
+
+/* ─── GALLERY / PORTFOLIO ─── */
+.gallery-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;gap:20px;flex-wrap:wrap;}
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;}
+.ftag{background:transparent;border:1px solid var(--rule);color:var(--dim);padding:7px 16px;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .2s;}
+.ftag:hover{border-color:rgba(255,255,255,.3);color:var(--white);}
+.ftag.on{background:var(--white);color:var(--ink);border-color:var(--white);}
+.cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--rule);}
+.car-card{background:var(--ink2);transition:background .2s;cursor:pointer;display:flex;flex-direction:column;}
+.car-card:hover{background:var(--ink3);}
+.card-img{position:relative;height:200px;overflow:hidden;background:var(--ink3);}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.car-card:hover .card-img img{transform:scale(1.04);}
+.card-status{position:absolute;top:12px;left:12px;font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.2em;padding:4px 10px;text-transform:uppercase;border-radius:1px;}
+.s-av{background:var(--green);color:var(--white);}
+.s-rs{background:var(--gold);color:var(--ink);}
+.s-so{background:rgba(255,255,255,.15);color:rgba(255,255,255,.55);}
+.card-year{position:absolute;top:12px;right:12px;font-family:var(--ff-mono);font-size:.6rem;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);padding:4px 8px;border-radius:1px;}
+.card-body{padding:20px 22px;flex:1;display:flex;flex-direction:column;gap:0;}
+.card-make{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.25em;color:var(--red);text-transform:uppercase;margin-bottom:4px;}
+.card-model{font-family:var(--ff-disp);font-size:1.35rem;font-weight:700;letter-spacing:-.01em;line-height:1.1;margin-bottom:14px;}
+.card-specs{display:flex;gap:14px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--rule);margin-bottom:16px;}
+.card-spec{font-family:var(--ff-mono);font-size:.58rem;color:var(--dim);letter-spacing:.04em;}
+.card-footer{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;}
+.card-price{font-family:var(--ff-disp);font-size:1.5rem;font-weight:700;line-height:1;}
+.card-monthly{font-family:var(--ff-mono);font-size:.55rem;color:var(--dim);margin-top:3px;}
+.card-btns{display:flex;gap:6px;flex-shrink:0;}
+.c-btn-v{background:var(--red);color:var(--white);border:none;padding:8px 16px;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:1px;transition:background .2s;}
+.c-btn-v:hover{background:var(--red-dim);}
+.c-btn-w{background:var(--ink3);border:1px solid var(--rule);color:rgba(255,255,255,.5);padding:8px 10px;font-size:.65rem;border-radius:1px;transition:all .2s;}
+.c-btn-w:hover{border-color:rgba(255,255,255,.25);color:var(--white);}
+.load-row{text-align:center;margin-top:40px;}
+.btn-more{background:transparent;border:1px solid var(--rule);color:var(--dim);padding:12px 40px;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:all .2s;}
+.btn-more:hover{border-color:rgba(255,255,255,.3);color:var(--white);}
+
+/* ─── MODAL BASE ─── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+.overlay.on{display:flex;}
+.modal{background:var(--ink2);border:1px solid var(--rule);border-radius:2px;position:relative;animation:mIn .3s var(--ease);}
+@keyframes mIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.m-close{position:absolute;top:16px;right:16px;background:var(--ink3);border:1px solid var(--rule);color:var(--dim);width:32px;height:32px;border-radius:50%;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5;}
+.m-close:hover{background:var(--red);color:var(--white);border-color:var(--red);}
+
+/* ─── PROJECT MODAL ─── */
+.car-modal{max-width:880px;width:100%;max-height:90vh;overflow-y:auto;display:flex;}
+.cm-photos{width:45%;flex-shrink:0;}
+.cm-main-img{width:100%;height:280px;object-fit:cover;}
+.cm-thumbs{display:flex;gap:4px;padding:8px;background:var(--ink3);}
+.cm-thumbs img{flex:1;height:52px;object-fit:cover;border-radius:1px;opacity:.4;cursor:pointer;border:1.5px solid transparent;transition:all .2s;}
+.cm-thumbs img.on,.cm-thumbs img:hover{opacity:1;border-color:var(--red);}
+.cm-info{flex:1;padding:28px 28px 24px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;}
+.cm-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.cm-title{font-family:var(--ff-disp);font-size:1.55rem;font-weight:700;line-height:1.1;letter-spacing:-.01em;}
+.cm-price{font-family:var(--ff-disp);font-size:2rem;font-weight:700;color:var(--red);line-height:1;}
+.cm-spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.spec-box{background:var(--ink3);padding:10px 12px;border-radius:1px;}
+.spec-k{font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;}
+.spec-v{font-size:.82rem;font-weight:500;margin-top:3px;}
+.cm-desc{font-size:.8rem;color:var(--dim);line-height:1.75;font-weight:300;}
+.cm-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);}
+.btn-wa{background:#1A7A42;color:var(--white);border:none;padding:11px 18px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
+.btn-wa:hover{background:#155c32;}
+
+/* ─── BOOKING MODAL ─── */
+.pur-modal{max-width:480px;width:100%;flex-direction:column;padding:36px;}
+.step-track{display:flex;align-items:center;margin-bottom:28px;}
+.step-node{font-family:var(--ff-mono);font-size:.58rem;letter-spacing:.12em;color:var(--dim);white-space:nowrap;}
+.step-node.act{color:var(--white);font-weight:500;}
+.step-node.done{color:var(--green);}
+.step-line{flex:1;height:1px;background:var(--rule);margin:0 12px;}
+.ps-title{font-family:var(--ff-disp);font-size:1.5rem;font-weight:700;margin-bottom:20px;color:var(--white);}
+.f-inp{width:100%;background:var(--ink3);border:1px solid var(--rule);color:var(--white);padding:11px 14px;font-size:.82rem;border-radius:2px;margin-bottom:10px;transition:border-color .2s;}
+.f-inp:focus{outline:none;border-color:rgba(255,255,255,.35);}
+.f-inp option{background:var(--ink2);}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.pay-opt input{display:none;}
+.pay-tile{background:var(--ink3);border:1px solid var(--rule);padding:14px 10px;border-radius:2px;cursor:pointer;transition:all .2s;text-align:center;}
+.pay-tile .pt-icon{font-size:1.2rem;display:block;margin-bottom:4px;}
+.pay-tile .pt-label{font-size:.68rem;font-weight:500;letter-spacing:.05em;color:var(--dim);}
+.pay-opt input:checked+.pay-tile{border-color:var(--red);background:var(--red-tint);}
+.pay-opt input:checked+.pay-tile .pt-label{color:var(--white);}
+.pay-detail{background:var(--ink3);border-left:2px solid var(--red);padding:14px 16px;margin-bottom:10px;font-size:.8rem;line-height:2;color:var(--dim);}
+.pay-detail strong{color:var(--white);}
+.success-screen{text-align:center;padding:8px 0;}
+.success-screen h3{font-family:var(--ff-disp);font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:10px;}
+.success-screen p{font-size:.82rem;color:var(--dim);line-height:1.8;}
+.order-ref{font-family:var(--ff-mono);font-size:.75rem;color:var(--white);background:var(--ink3);border:1px solid var(--rule);padding:12px;margin:16px 0;letter-spacing:.1em;}
+.divider{height:1px;background:var(--rule);margin:12px 0;}
+.hidden{display:none!important;}
+
+/* ─── ENQ MODAL ─── */
+.enq-modal{max-width:420px;width:100%;flex-direction:column;padding:36px;gap:12px;}
+.enq-modal h3{font-family:var(--ff-disp);font-size:1.5rem;font-weight:700;}
+.enq-modal .sub{font-size:.78rem;color:var(--dim);font-weight:300;margin-bottom:4px;}
+
+/* ─── SERVICES ─── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);}
+.svc-card{background:var(--ink);padding:32px 28px;border-bottom:1px solid var(--rule);transition:background .2s;}
+.svc-card:hover{background:var(--ink3);}
+.svc-card.hero-svc{background:var(--red);border-color:var(--red);}
+.svc-card.hero-svc:hover{background:var(--red-dim);}
+.svc-n{font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-bottom:14px;}
+.svc-card.hero-svc .svc-n{color:rgba(255,255,255,.6);}
+.svc-title{font-family:var(--ff-disp);font-size:1.25rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+.svc-body{font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300;}
+.svc-card.hero-svc .svc-body{color:rgba(255,255,255,.7);}
+
+/* ─── CALC / QUOTE ESTIMATOR ─── */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
+.calc-inputs-pane{background:var(--ink2);padding:44px;}
+.calc-results-pane{background:var(--ink3);padding:44px;display:flex;flex-direction:column;gap:0;}
+.c-field{margin-bottom:20px;}
+.c-field label{display:block;font-family:var(--ff-mono);font-size:.54rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-bottom:8px;}
+.c-field input,.c-field select{width:100%;background:var(--ink3);border:1px solid var(--rule);color:var(--white);padding:11px 14px;font-size:.85rem;border-radius:2px;transition:border-color .2s;}
+.c-field input:focus,.c-field select:focus{outline:none;border-color:rgba(255,255,255,.3);}
+.c-field select option{background:var(--ink2);}
+.res-row{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.res-row:first-child{border-top:1px solid var(--rule);}
+.res-k{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;}
+.res-v{font-family:var(--ff-disp);font-size:1.2rem;font-weight:700;}
+.res-row.big .res-v{font-size:1.8rem;color:var(--red);}
+.res-row.big .res-k{color:rgba(255,255,255,.6);}
+.calc-cta{margin-top:32px;}
+
+/* ─── TESTIMONIALS ─── */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-lt);}
+.t-card{background:var(--paper);padding:36px 32px;}
+.t-card.feat{background:var(--ink);color:var(--white);}
+.t-stars{font-size:.7rem;letter-spacing:.2em;color:var(--gold);margin-bottom:16px;}
+.t-q{font-family:var(--ff-disp);font-size:1.05rem;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:24px;}
+.t-card.feat .t-q{color:rgba(255,255,255,.75);}
+.t-byline{display:flex;align-items:center;gap:12px;}
+.t-init{width:36px;height:36px;background:var(--red);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;flex-shrink:0;}
+.t-name{font-size:.82rem;font-weight:600;color:var(--ink);}
+.t-card.feat .t-name{color:var(--white);}
+.t-loc{font-size:.72rem;color:var(--mid);}
+.t-card.feat .t-loc{color:var(--dim);}
+
+/* ─── ABOUT ─── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--rule);}
+.about-img-col{position:relative;}
+.about-img-col img{width:100%;height:100%;min-height:500px;object-fit:cover;display:block;}
+.about-img-col::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--ink));}
+.about-txt-col{background:var(--ink);padding:72px 56px;display:flex;flex-direction:column;justify-content:center;}
+.about-txt-col h2{font-family:var(--ff-disp);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin:12px 0 20px;}
+.about-txt-col h2 span{color:var(--red);font-style:italic;}
+.about-txt-col p{font-size:.85rem;color:var(--dim);line-height:1.85;font-weight:300;margin-bottom:12px;}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:24px 0 28px;}
+.af{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:8px;}
+.af::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+/* ─── CONTACT ─── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;}
+.ci-list{display:flex;flex-direction:column;gap:0;}
+.ci-row{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start;}
+.ci-row:first-child{border-top:1px solid var(--rule);}
+.ci-icon-box{width:32px;flex-shrink:0;padding-top:2px;}
+.ci-icon-box svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:1.5;}
+.ci-label{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:4px;}
+.ci-val{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.7;font-weight:300;}
+.soc-row{display:flex;gap:6px;margin-top:24px;}
+.soc-a{width:32px;height:32px;border:1px solid var(--rule);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-mono);font-size:.55rem;color:var(--dim);transition:all .2s;}
+.soc-a:hover{border-color:rgba(255,255,255,.3);color:var(--white);}
+.cf-card{background:var(--ink2);border:1px solid var(--rule);padding:36px;}
+.cf-card h4{font-family:var(--ff-disp);font-size:1.35rem;font-weight:700;margin-bottom:22px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink2);border-top:1px solid var(--rule);}
+.footer-main{max-width:1240px;margin:0 auto;padding:56px 48px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+.f-brand .f-logo{font-family:var(--ff-disp);font-size:1.5rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+.f-brand .f-logo span{color:var(--red);}
+.f-brand p{font-size:.8rem;color:var(--dim);line-height:1.8;font-weight:300;margin-bottom:16px;}
+.f-cert{font-family:var(--ff-mono);font-size:.54rem;letter-spacing:.2em;color:var(--green);text-transform:uppercase;}
+.f-col h5{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-bottom:16px;}
+.f-col a{display:block;font-size:.8rem;color:rgba(255,255,255,.35);margin-bottom:9px;transition:color .2s;font-weight:300;}
+.f-col a:hover{color:rgba(255,255,255,.75);}
+.footer-bottom{border-top:1px solid var(--rule);}
+.footer-bottom-inner{max-width:1240px;margin:0 auto;padding:18px 48px;display:flex;justify-content:space-between;}
+.footer-bottom-inner p{font-family:var(--ff-mono);font-size:.58rem;color:var(--dim);letter-spacing:.06em;}
+
+/* ─── ADMIN ─── */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px);}
+.admin-overlay.on{display:flex;}
+.admin-panel{background:var(--ink2);border:1px solid var(--rule);width:100%;max-width:1160px;height:86vh;display:flex;overflow:hidden;}
+.admin-side{width:200px;background:var(--ink);flex-shrink:0;border-right:1px solid var(--rule);padding:24px 0;display:flex;flex-direction:column;}
+.a-logo{font-family:var(--ff-disp);font-size:1.15rem;font-weight:700;padding:0 20px 20px;border-bottom:1px solid var(--rule);margin-bottom:12px;}
+.a-logo span{color:var(--red);}
+.a-nav{flex:1;padding:0 12px;display:flex;flex-direction:column;gap:2px;}
+.a-btn{background:transparent;border:none;color:var(--dim);text-align:left;padding:10px 12px;border-radius:2px;font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;}
+.a-btn:hover{background:var(--ink3);color:var(--white);}
+.a-btn.on{background:var(--red);color:var(--white);}
+.a-close{margin:12px;background:transparent;border:1px solid var(--rule);color:var(--dim);padding:10px;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:all .2s;}
+.a-close:hover{border-color:rgba(255,255,255,.2);color:var(--white);}
+.admin-body{flex:1;padding:32px;overflow-y:auto;background:var(--ink2);}
+.a-pane h2{font-family:var(--ff-disp);font-size:1.6rem;font-weight:700;margin-bottom:24px;color:var(--white);}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:var(--ink3);border:1px solid var(--rule);padding:20px;border-left:2px solid var(--red);}
+.kpi.g{border-color:var(--green);}
+.kpi.y{border-color:var(--gold);}
+.kpi.w{border-left-color:var(--rule);}
+.kpi-n{font-family:var(--ff-disp);font-size:1.7rem;font-weight:700;line-height:1;}
+.kpi-l{font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:5px;}
+.act-card{background:var(--ink3);border:1px solid var(--rule);padding:20px;}
+.act-card h4{font-family:var(--ff-mono);font-size:.58rem;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;margin-bottom:14px;}
+.act-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:.78rem;color:rgba(255,255,255,.55);}
+.act-dot{width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0;margin-top:5px;}
+.act-t{font-family:var(--ff-mono);font-size:.6rem;color:var(--dim);margin-left:auto;white-space:nowrap;flex-shrink:0;}
+.tbl-wrap{background:var(--ink3);border:1px solid var(--rule);overflow-x:auto;}
+.a-tbl{width:100%;border-collapse:collapse;font-size:.78rem;}
+.a-tbl th{background:var(--ink);font-family:var(--ff-mono);font-size:.54rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:1px solid var(--rule);}
+.a-tbl td{padding:11px 16px;border-bottom:1px solid var(--rule);color:rgba(255,255,255,.6);}
+.a-tbl tr:last-child td{border:none;}
+.a-tbl tr:hover td{background:rgba(255,255,255,.02);}
+.s-pill{padding:3px 9px;border-radius:1px;font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.1em;font-weight:500;}
+.sp-av{background:rgba(26,122,66,.25);color:var(--green);}
+.sp-rs{background:rgba(200,169,74,.2);color:var(--gold);}
+.sp-so{background:rgba(255,255,255,.08);color:var(--dim);}
+.tbl-btn{background:transparent;border:1px solid var(--rule);color:var(--dim);padding:4px 10px;border-radius:1px;font-size:.62rem;transition:all .2s;margin-right:4px;}
+.tbl-btn:hover{border-color:rgba(255,255,255,.25);color:var(--white);}
+.tbl-btn.del:hover{border-color:#cc2222;color:#cc2222;}
+.add-form{background:var(--ink3);border:1px solid var(--rule);padding:28px;max-width:680px;}
+.af-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.af-field{margin-bottom:12px;}
+.af-field.full{grid-column:1/-1;}
+.af-field label{display:block;font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:6px;}
+.af-field input,.af-field select,.af-field textarea{width:100%;background:var(--ink2);border:1px solid var(--rule);color:var(--white);padding:10px 12px;font-size:.82rem;border-radius:2px;transition:border-color .2s;}
+.af-field input:focus,.af-field select:focus,.af-field textarea:focus{outline:none;border-color:rgba(255,255,255,.3);}
+.af-field select option{background:var(--ink2);}
+.af-field textarea{resize:vertical;}
+
+/* ─── FAB ─── */
+.fab{position:fixed;bottom:28px;right:28px;background:#128C7E;color:var(--white);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:transform .2s;}
+.fab:hover{transform:scale(1.08);}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:88px;right:28px;z-index:5000;background:var(--ink3);border:1px solid var(--rule);border-left:2px solid var(--green);color:rgba(255,255,255,.85);padding:12px 18px;font-size:.78rem;opacity:0;transform:translateX(10px);transition:all .3s var(--ease);pointer-events:none;max-width:280px;border-radius:2px;}
+.toast.show{opacity:1;transform:translateX(0);}
+.toast.err{border-left-color:var(--red);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-r{height:340px;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-img-col img{min-height:320px;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .test-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-main{grid-template-columns:1fr 1fr;}
+  .kpi-row{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .nav-links,.nav-tel{display:none;}
+  .hbg{display:flex;}
+  .hero-l{padding:48px 24px;}
+  .calc-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .section{padding:64px 24px;}
+  .search-band{padding:24px;}
+  .admin-panel{flex-direction:column;max-height:92vh;}
+  .admin-side{width:100%;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px;gap:6px;}
+  .a-nav{flex-direction:row;flex-wrap:wrap;}
+}
+@media(max-width:600px){
+  h1.hero-h{font-size:3rem;}
+  .hero-stats{flex-direction:column;gap:16px;}
+  .hstat+.hstat{padding-left:0;border-left:none;border-top:1px solid var(--rule);padding-top:16px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .footer-main{grid-template-columns:1fr;padding:40px 24px 24px;}
+  .footer-bottom-inner{flex-direction:column;gap:4px;padding:16px 24px;}
+  .pur-modal{padding:24px;}
+  .cf-row{grid-template-columns:1fr;}
+  .af-grid{grid-template-columns:1fr;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-inner">
+    <div class="ld-mark">WRAP<span>N</span>DRIVE</div>
+    <div class="ld-sub">Premium Vehicle Wrapping &mdash; Nairobi</div>
+    <div class="ld-bar"><div class="ld-fill"></div></div>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="nav-logo">WRAP<span>N</span>DRIVE</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#gallery">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#quote">Get Quote</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <span class="nav-tel">+254 700 123 456</span>
+    <button class="nav-btn" onclick="gs('gallery')">Our Work</button>
+    <button class="nav-ghost" onclick="openAdmin()">Admin</button>
+    <div class="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <ul>
+    <li><a href="#home" onclick="toggleMob()">Home</a></li>
+    <li><a href="#gallery" onclick="toggleMob()">Portfolio</a></li>
+    <li><a href="#services" onclick="toggleMob()">Services</a></li>
+    <li><a href="#quote" onclick="toggleMob()">Get Quote</a></li>
+    <li><a href="#about" onclick="toggleMob()">About</a></li>
+    <li><a href="#contact" onclick="toggleMob()">Contact</a></li>
+    <li><a href="#" onclick="openAdmin();toggleMob()">Admin Panel</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-l">
+    <div class="hero-flag">Kenya's Premier Wrap Studio</div>
+    <h1 class="hero-h">
+      <span class="it">Transform your</span><br>
+      <span>VEHICLE.</span><br>
+      <span class="rd">Own the road.</span>
+    </h1>
+    <p class="hero-body" style="color: #fff;">Premium vinyl wraps, colour changes & paint protection. Flawless finishes that turn heads — delivered across all 47 counties.</p>
+    <div class="hero-btns">
+      <button class="btn-solid" onclick="gs('gallery')">View Portfolio</button>
+      <button class="btn-line" onclick="gs('quote')">Get a Quote</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">850+</div><div class="hstat-l">Wraps Done</div></div>
+      <div class="hstat"><div class="hstat-n">6 Yrs</div><div class="hstat-l">In Business</div></div>
+      <div class="hstat"><div class="hstat-n">47</div><div class="hstat-l">Counties Served</div></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img id="heroImg" src="Img/c1.jpg" alt="Featured Wrap Project"/>
+    <div class="hero-badge-overlay">
+      <div class="hbo-label">Featured Project</div>
+      <div class="hbo-val" id="heroBadgeVal">Matte Black Full Body Wrap — GLE 350</div>
+    </div>
+    <div class="hero-thumbs-v">
+      <img src="Img/c2.jpg" class="on" onclick="swapHero(this,'Matte Black Full Body Wrap — GLE 350')" alt=""/>
+      <img src="Img/c3.jpg" onclick="swapHero(this,'Satin Chrome Colour Change — Subaru WRX')" alt=""/>
+      <img src="Img/c4.jpg" onclick="swapHero(this,'Carbon Fibre Partial Wrap — Range Rover')" alt=""/>
+      <img src="Img/c1.jpg" onclick="swapHero(this,'Gloss Red Full Wrap — BMW X5')" alt=""/>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Current Promos</span><span class="sep">—</span>
+    <span>Full Body Wrap from KSH 35,000</span><span class="sep">—</span>
+    <span>Paint Protection Film (PPF) — SUVs from KSH 45,000</span><span class="sep">—</span>
+    <span>Colour Change Wraps — All Models</span><span class="sep">—</span>
+    <span>Roof & Bonnet Wraps from KSH 8,000</span><span class="sep">—</span>
+    <span>Fleet Branding Available</span><span class="sep">—</span>
+    <span>Free Consultation — Nairobi Walk-ins Welcome</span><span class="sep">—</span>
+  </div>
+</div>
+
+<!-- QUICK QUOTE BAND -->
+<div class="search-band">
+  <div class="search-inner">
+    <span class="search-label">Quick Quote Estimator</span>
+    <div class="search-row">
+      <select class="s-sel" id="fMake"><option value="">Vehicle Type</option><option>Sedan</option><option>SUV / Crossover</option><option>Pickup / Truck</option><option>Hatchback</option><option>Van / Minibus</option><option>Sports Car</option></select>
+      <select class="s-sel" id="fBody"><option value="">Wrap Type</option><option>Full Body Wrap</option><option>Partial Wrap</option><option>Colour Change</option><option>Paint Protection Film</option><option>Roof Wrap</option><option>Fleet Branding</option></select>
+      <select class="s-sel" id="fPrice"><option value="">Finish</option><option value="matte">Matte</option><option value="gloss">Gloss</option><option value="satin">Satin</option><option value="chrome">Chrome / Mirror</option><option value="carbon">Carbon Fibre</option><option value="custom">Custom Design</option></select>
+      <select class="s-sel" id="fYear"><option value="">Timeline</option><option>ASAP</option><option>This Week</option><option>This Month</option><option>Flexible</option></select>
+      <button class="btn-search" onclick="runSearch()">Estimate</button>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="gallery" class="section alt">
+  <div class="sec-inner">
+    <div class="gallery-bar">
+      <div class="sec-hd" style="margin-bottom:0">
+        <div class="eyebrow">Our Portfolio</div>
+        <h2 class="sec-title">Browse <span class="it rd">Projects</span></h2>
+      </div>
+      <div class="filter-row">
+        <button class="ftag on" onclick="filterTab(this,'all')">All</button>
+        <button class="ftag" onclick="filterTab(this,'fullwrap')">Full Wrap</button>
+        <button class="ftag" onclick="filterTab(this,'colour')">Colour Change</button>
+        <button class="ftag" onclick="filterTab(this,'ppf')">PPF</button>
+        <button class="ftag" onclick="filterTab(this,'partial')">Partial Wrap</button>
+        <button class="ftag" onclick="filterTab(this,'fleet')">Fleet</button>
+      </div>
+    </div>
+    <div class="cars-grid" id="carsGrid"></div>
+    <div class="load-row"><button class="btn-more" onclick="loadMore()">Load More</button></div>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="overlay" id="carOverlay">
+  <div class="modal car-modal">
+    <button class="m-close" onclick="closeCar()">&#x2715;</button>
+    <div class="cm-photos">
+      <img class="cm-main-img" id="mImg" src="" alt=""/>
+      <div class="cm-thumbs" id="mThumbs"></div>
+    </div>
+    <div class="cm-info">
+      <div class="cm-tags" id="mTags"></div>
+      <h2 class="cm-title" id="mTitle"></h2>
+      <div class="cm-price" id="mPrice"></div>
+      <div class="cm-spec-grid" id="mSpecs"></div>
+      <p class="cm-desc" id="mDesc"></p>
+      <div class="cm-actions">
+        <button class="btn-solid" onclick="openPurchase()">Book Now</button>
+        <button class="btn-line" onclick="openEnq()">Enquire</button>
+        <button class="btn-wa" onclick="waEnq()">WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="overlay" id="purOverlay">
+  <div class="modal pur-modal">
+    <button class="m-close" onclick="closePur()">&#x2715;</button>
+    <div class="step-track">
+      <span class="step-node act" id="si1">1. Details</span>
+      <span class="step-line"></span>
+      <span class="step-node" id="si2">2. Payment</span>
+      <span class="step-line"></span>
+      <span class="step-node" id="si3">3. Confirm</span>
+    </div>
+    <div id="ps1">
+      <div class="ps-title">Your Details</div>
+      <input class="f-inp" type="text" id="bName" placeholder="Full Name *"/>
+      <input class="f-inp" type="tel" id="bPhone" placeholder="Phone Number (07XXXXXXXX) *"/>
+      <input class="f-inp" type="email" id="bEmail" placeholder="Email Address"/>
+      <input class="f-inp" type="text" id="bID" placeholder="Vehicle Reg. / Number Plate *"/>
+      <select class="f-inp" id="bDel">
+        <option value="">Drop-off / Collection Option</option>
+        <option>Drop off at Studio — Nairobi CBD</option>
+        <option>Mobile Service — Nairobi (+KSH 3,000)</option>
+        <option>Mobile Service — Mombasa (+KSH 15,000)</option>
+        <option>Mobile Service — Kisumu (+KSH 12,000)</option>
+        <option>Mobile Service — Eldoret (+KSH 10,000)</option>
+        <option>Other (Quote Required)</option>
+      </select>
+      <button class="btn-solid" style="width:100%;margin-top:8px" onclick="goP2()">Continue</button>
+    </div>
+    <div id="ps2" class="hidden">
+      <div class="ps-title">Payment Method</div>
+      <div class="pay-grid">
+        <label class="pay-opt"><input type="radio" name="pay" value="mpesa"/><div class="pay-tile"><span class="pt-icon">M</span><span class="pt-label">M-PESA</span></div></label>
+        <label class="pay-opt"><input type="radio" name="pay" value="bank"/><div class="pay-tile"><span class="pt-icon">B</span><span class="pt-label">Bank Transfer</span></div></label>
+        <label class="pay-opt"><input type="radio" name="pay" value="deposit"/><div class="pay-tile"><span class="pt-icon">D</span><span class="pt-label">50% Deposit</span></div></label>
+        <label class="pay-opt"><input type="radio" name="pay" value="cash"/><div class="pay-tile"><span class="pt-icon">C</span><span class="pt-label">Cash</span></div></label>
+      </div>
+      <div id="piM" class="pay-detail hidden"><p>Paybill: <strong>123456</strong> &nbsp;|&nbsp; Account: <strong>Your Phone No.</strong></p><p>Business: <strong>Wrap N Drive Ltd.</strong></p><input class="f-inp" type="text" style="margin-top:8px" placeholder="M-PESA Transaction Code *"/></div>
+      <div id="piB" class="pay-detail hidden"><p>Equity Bank Kenya &nbsp;|&nbsp; Acc: <strong>0123456789012</strong></p><p>Branch: <strong>Westlands, Nairobi</strong></p><input class="f-inp" type="text" style="margin-top:8px" placeholder="Bank Reference No. *"/></div>
+      <div id="piF" class="pay-detail hidden"><p>50% deposit secures your booking slot.</p><p>Balance due upon project completion.</p></div>
+      <button class="btn-solid" style="width:100%;margin-top:4px" onclick="goP3()">Confirm Booking</button>
+      <button class="btn-line" style="width:100%;margin-top:8px" onclick="backP1()">Back</button>
+    </div>
+    <div id="ps3" class="hidden">
+      <div class="success-screen">
+        <div style="width:40px;height:40px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:.85rem;color:#fff">&#10003;</div>
+        <h3>Booking Confirmed</h3>
+        <p id="confMsg"></p>
+        <div class="order-ref" id="ordRef"></div>
+        <p style="font-size:.72rem;color:var(--dim)">Our team will call you within 30 minutes to confirm your slot.</p>
+        <button class="btn-solid" style="margin-top:20px;width:100%" onclick="closePur()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENQUIRY MODAL -->
+<div class="overlay" id="enqOverlay">
+  <div class="modal enq-modal">
+    <button class="m-close" onclick="closeEnq()">&#x2715;</button>
+    <h3>Send Enquiry</h3>
+    <p class="sub" id="enqLine"></p>
+    <div class="divider"></div>
+    <input class="f-inp" type="text" id="eqName" placeholder="Your Name *"/>
+    <input class="f-inp" type="tel" id="eqPhone" placeholder="Phone Number *"/>
+    <input class="f-inp" type="email" id="eqEmail" placeholder="Email (optional)"/>
+    <textarea class="f-inp" id="eqMsg" rows="3" placeholder="Your question or message..."></textarea>
+    <button class="btn-solid" style="width:100%" onclick="submitEnq()">Send Message</button>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section" style="padding-top:0;padding-left:0;padding-right:0;padding-bottom:0;">
+  <div style="max-width:1240px;margin:0 auto;padding:88px 48px 0;">
+    <div class="sec-hd center">
+      <div class="eyebrow center">What We Do</div>
+      <h2 class="sec-title">Our <span class="it rd">Services</span></h2>
+    </div>
+  </div>
+  <div class="svc-grid" style="max-width:1240px;margin:0 auto;color: #ffffff;">
+    <div class="svc-card"><div class="svc-n">01</div><div class="svc-title">Full Body Wraps</div><p class="svc-body"  style="color: #fff;">Complete vehicle transformation using premium 3M and KPMF vinyl. Matte, gloss, satin, chrome and custom finishes — applied with precision to every panel.</p></div>
+    <div class="svc-card hero-svc"><div class="svc-n">02</div><div class="svc-title">Colour Changes</div><p class="svc-body"  style="color: #fff;">Completely reinvent your vehicle's look without permanent paint. Reversible colour-change wraps in hundreds of shades — factory-fresh aesthetics, zero commitment.</p></div>
+    <div class="svc-card"><div class="svc-n">03</div><div class="svc-title">Paint Protection Film</div><p class="svc-body"  style="color: #fff;">Self-healing PPF shields your paintwork from stone chips, scratches and UV damage. Invisible protection that preserves your car's value for years.</p></div>
+    <div class="svc-card"><div class="svc-n">04</div><div class="svc-title">Partial Wraps</div><p class="svc-body"  style="color: #fff;">Roof, bonnet, mirrors, pillars, or any section you choose. Partial wraps deliver high visual impact at a fraction of the full-body cost.</p></div>
+    <div class="svc-card"><div class="svc-n">05</div><div class="svc-title">Fleet & Corporate Branding</div><p class="svc-body"  style="color: #fff;">Turn your company vehicles into moving billboards. We handle design, printing and installation for fleets of any size — consistent branding across every vehicle.</p></div>
+    <div class="svc-card"><div class="svc-n">06</div><div class="svc-title">Mobile Wrapping</div><p class="svc-body"  style="color: #fff;">Can't come to us? We come to you. Our mobile team provides professional installation across Nairobi and major towns throughout Kenya.</p></div>
+  </div>
+  <div style="height:88px;"></div>
+</section>
+
+<!-- QUOTE ESTIMATOR -->
+<section id="quote" class="section" style="padding:0;">
+  <div style="max-width:1240px;margin:0 auto;padding:88px 48px 56px;">
+    <div class="sec-hd">
+      <div class="eyebrow">Plan Your Wrap</div>
+      <h2 class="sec-title">Quote <span class="it rd">Estimator</span></h2>
+      <p class="sec-sub">Get an instant estimate for your vehicle wrap project</p>
+    </div>
+  </div>
+  <div class="calc-grid" style="max-width:1240px;margin:0 auto;">
+    <div class="calc-inputs-pane">
+      <div class="c-field"><label>Vehicle Size</label><select id="cP" onchange="doCalc()"><option value="small">Small (Hatchback / Sedan)</option><option value="medium" selected>Medium (SUV / Crossover)</option><option value="large">Large (Pickup / Van)</option><option value="xlarge">XL (Minibus / Truck)</option></select></div>
+      <div class="c-field"><label>Wrap Type</label><select id="cD" onchange="doCalc()"><option value="partial">Partial Wrap</option><option value="colour" selected>Colour Change (Full)</option><option value="full">Full Body Wrap (Premium)</option><option value="ppf">Paint Protection Film</option><option value="fleet">Fleet / Corporate Branding</option></select></div>
+      <div class="c-field"><label>Vinyl Finish</label><select id="cT" onchange="doCalc()"><option value="matte" selected>Matte</option><option value="gloss">Gloss</option><option value="satin">Satin</option><option value="chrome">Chrome / Mirror</option><option value="carbon">Carbon Fibre</option><option value="custom">Custom Print</option></select></div>
+      <div class="c-field"><label>Number of Vehicles</label><input type="number" id="cR" value="1" min="1" oninput="doCalc()"/></div>
+    </div>
+    <div class="calc-results-pane">
+      <div class="res-row"><span class="res-k">Base Wrap Cost</span><span class="res-v" id="rL">KSH 0</span></div>
+      <div class="res-row big"><span class="res-k">Estimated Total</span><span class="res-v" id="rM">KSH 0</span></div>
+      <div class="res-row"><span class="res-k">Finish Premium</span><span class="res-v" id="rI">KSH 0</span></div>
+      <div class="res-row"><span class="res-k">Estimated Duration</span><span class="res-v" id="rT">—</span></div>
+      <div class="calc-cta"><button class="btn-solid" onclick="gs('gallery')">Book This Wrap</button></div>
+    </div>
+  </div>
+  <div style="height:1px;background:var(--rule);max-width:1240px;margin:0 auto;"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding:88px 0;">
+  <div style="max-width:1240px;margin:0 auto;padding:0 48px 48px;">
+    <div class="sec-hd center">
+      <div class="eyebrow center">Client Feedback</div>
+      <h2 class="sec-title on-paper" style="color:var(--white)">What <span class="it rd">Clients</span> Say</h2>
+    </div>
+  </div>
+  <div class="test-grid" style="max-width:1240px;margin:0 auto;">
+    <div class="t-card feat">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-q">"Got a full matte black wrap on my Land Cruiser. The finish is absolutely flawless — looks better than a factory respray. Professional team, delivered on time."</p>
+      <div class="t-byline"><div class="t-init">JM</div><div><div class="t-name" style="color:var(--white)">James Mwangi</div><div class="t-loc">Nairobi</div></div></div>
+    </div>
+    <div class="t-card" style="background:var(--paper2);">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-q">"Wrap N Drive did the PPF on my new GLE. Couldn't even tell it was there — completely invisible. My paint is protected and the car still looks perfect."</p>
+      <div class="t-byline"><div class="t-init">AW</div><div><div class="t-name">Amina Wanjiku</div><div class="t-loc">Mombasa</div></div></div>
+    </div>
+    <div class="t-card" style="background:var(--paper);">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-q">"Had our entire company fleet of 12 vehicles branded by Wrap N Drive. Consistent, sharp graphics on every vehicle. Best investment we've made for brand visibility."</p>
+      <div class="t-byline"><div class="t-init">PO</div><div><div class="t-name">Peter Otieno</div><div class="t-loc">Eldoret</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid" style="max-width:1240px;margin:0 auto;">
+    <div class="about-img-col">
+      <img src="Img/logo.jpg" alt="Wrap N Drive Studio"/>
+    </div>
+    <div class="about-txt-col">
+      <div class="eyebrow">Who We Are</div>
+      <h2>Wrap N <span>Drive</span></h2>
+      <p>Founded in 2018, Wrap N Drive is Nairobi's most trusted premium vehicle wrapping studio. Based along Mombasa Road in Industrial Area, we've completed over 850 projects — from individual enthusiasts to major corporate fleets.</p>
+      <p>We work exclusively with 3M, KPMF and Avery Dennison premium vinyl — the same materials used by top automotive studios worldwide. Every wrap is installed by certified technicians in our climate-controlled facility.</p>
+      <div class="about-feats">
+        <div class="af">3M Certified Installers</div>
+        <div class="af">Climate-Controlled Studio</div>
+        <div class="af">2-Year Wrap Warranty</div>
+        <div class="af">Fully Reversible Wraps</div>
+        <div class="af">Fleet Specialists</div>
+        <div class="af">PPF Experts</div>
+      </div>
+      <button class="btn-solid" onclick="gs('contact')">Visit Our Studio</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section alt">
+  <div class="sec-inner">
+    <div class="sec-hd">
+      <div class="eyebrow">Reach Us</div>
+      <h2 class="sec-title">Get In <span class="it rd">Touch</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="ci-list">
+        <div class="ci-row">
+          <div class="ci-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div><div class="ci-label">Studio Location</div><div class="ci-val">Industrial Area, Nairobi<br>Along Mombasa Road</div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+          <div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val">+254 700 123 456<br>+254 733 987 654</div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div><div class="ci-label">Email</div><div class="ci-val">info@wrapndrive.co.ke<br>studio@wrapndrive.co.ke</div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="ci-label">Studio Hours</div><div class="ci-val">Mon – Sat &nbsp; 8:00 AM – 6:00 PM<br>Sunday &nbsp; 10:00 AM – 3:00 PM</div></div>
+        </div>
+        <div class="soc-row">
+          <a href="#" class="soc-a">FB</a>
+          <a href="#" class="soc-a">IG</a>
+          <a href="#" class="soc-a">YT</a>
+          <a href="#" class="soc-a">TW</a>
+          <a href="#" class="soc-a">TK</a>
+        </div>
+      </div>
+      <div class="cf-card">
+        <h4>Send a Message</h4>
+        <div class="cf-row">
+          <input class="f-inp" type="text" id="cfN" placeholder="Full Name *"/>
+          <input class="f-inp" type="tel" id="cfP" placeholder="Phone Number *"/>
+        </div>
+        <input class="f-inp" type="email" id="cfE" placeholder="Email Address"/>
+        <select class="f-inp" id="cfS">
+          <option value="">Subject</option>
+          <option>Full Body Wrap Enquiry</option><option>Colour Change Quote</option>
+          <option>Paint Protection Film</option><option>Fleet / Corporate Branding</option>
+          <option>Partial Wrap</option><option>Other</option>
+        </select>
+        <textarea class="f-inp" id="cfM" rows="4" placeholder="Tell us about your vehicle and what you'd like done..."></textarea>
+        <button class="btn-solid" style="width:100%" onclick="submitContact()">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="f-brand">
+      <div class="f-logo">WRAP<span>N</span>DRIVE</div>
+      <p>Kenya's Premier Vehicle Wrap Studio.<br>Quality. Precision. Boldness.</p>
+      <div class="f-cert">3M Certified Installer</div>
+    </div>
+    <div class="f-col"><h5>Navigate</h5><a href="#gallery">Portfolio</a><a href="#quote">Get Quote</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    <div class="f-col"><h5>Services</h5><a href="#">Full Body Wraps</a><a href="#">Colour Changes</a><a href="#">PPF</a><a href="#">Fleet Branding</a><a href="#">Partial Wraps</a></div>
+    <div class="f-col"><h5>Support</h5><a href="#">How It Works</a><a href="#">Wrap Care Guide</a><a href="#">Warranty Info</a><a href="#">Gallery</a><a href="#">FAQs</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p>&copy; 2025 Wrap N Drive Ltd. All rights reserved. Nairobi, Kenya.</p>
+      <p>Premium Vinyl &mdash; 3M &middot; KPMF &middot; Avery Dennison</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ADMIN -->
+<div class="admin-overlay" id="adminOv">
+  <div class="admin-panel">
+    <div class="admin-side">
+      <div class="a-logo">WN<span>D</span></div>
+      <nav class="a-nav">
+        <button class="a-btn on" onclick="aPane('dashboard',this)">Dashboard</button>
+        <button class="a-btn" onclick="aPane('inventory',this)">Projects</button>
+        <button class="a-btn" onclick="aPane('orders',this)">Bookings</button>
+        <button class="a-btn" onclick="aPane('enquiries',this)">Enquiries</button>
+        <button class="a-btn" onclick="aPane('addcar',this)">Add Project</button>
+      </nav>
+      <button class="a-close" onclick="closeAdmin()">Close Panel</button>
+    </div>
+    <div class="admin-body">
+      <div class="a-pane" id="ap-dashboard">
+        <h2>Dashboard</h2>
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-n" id="kS">0</div><div class="kpi-l">Live Projects</div></div>
+          <div class="kpi y"><div class="kpi-n" id="kO">0</div><div class="kpi-l">Bookings</div></div>
+          <div class="kpi g"><div class="kpi-n" id="kE">0</div><div class="kpi-l">Enquiries</div></div>
+          <div class="kpi w"><div class="kpi-n" id="kR" style="font-size:1rem">KSH 0</div><div class="kpi-l">Revenue</div></div>
+        </div>
+        <div class="act-card"><h4>Recent Activity</h4><div id="actFeed"><p style="font-size:.78rem;color:var(--dim)">No activity yet.</p></div></div>
+      </div>
+      <div class="a-pane hidden" id="ap-inventory">
+        <h2>Project Portfolio</h2>
+        <div class="tbl-wrap"><table class="a-tbl"><thead><tr><th>ID</th><th>Project</th><th>Type</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody id="invB"></tbody></table></div>
+      </div>
+      <div class="a-pane hidden" id="ap-orders">
+        <h2>Bookings</h2>
+        <div class="tbl-wrap"><table class="a-tbl"><thead><tr><th>Ref</th><th>Customer</th><th>Project</th><th>Payment</th><th>Status</th><th>Date</th></tr></thead><tbody id="ordB"></tbody></table></div>
+      </div>
+      <div class="a-pane hidden" id="ap-enquiries">
+        <h2>Enquiries</h2>
+        <div class="tbl-wrap"><table class="a-tbl"><thead><tr><th>Name</th><th>Phone</th><th>Project</th><th>Message</th><th>Date</th></tr></thead><tbody id="enqB"></tbody></table></div>
+      </div>
+      <div class="a-pane hidden" id="ap-addcar">
+        <h2>Add New Project</h2>
+        <div class="add-form">
+          <div class="af-grid">
+            <div class="af-field"><label>Vehicle Make *</label><input type="text" id="acMk" placeholder="Toyota"/></div>
+            <div class="af-field"><label>Vehicle Model *</label><input type="text" id="acMo" placeholder="Land Cruiser"/></div>
+            <div class="af-field"><label>Year *</label><input type="number" id="acYr" placeholder="2023"/></div>
+            <div class="af-field"><label>Price (KSH) *</label><input type="number" id="acPr" placeholder="55000"/></div>
+            <div class="af-field"><label>Wrap Type</label><select id="acBd"><option>Full Body Wrap</option><option>Colour Change</option><option>Partial Wrap</option><option>PPF</option><option>Fleet Branding</option></select></div>
+            <div class="af-field"><label>Finish</label><select id="acFu"><option>Matte</option><option>Gloss</option><option>Satin</option><option>Chrome</option><option>Carbon Fibre</option><option>Custom Print</option></select></div>
+            <div class="af-field"><label>Duration (days)</label><input type="number" id="acMi" placeholder="3"/></div>
+            <div class="af-field"><label>Vinyl Brand</label><select id="acTr"><option>3M</option><option>KPMF</option><option>Avery Dennison</option><option>Oracal</option></select></div>
+            <div class="af-field"><label>Colour</label><input type="text" id="acEn" placeholder="Matte Midnight Black"/></div>
+            <div class="af-field"><label>Vehicle Type</label><input type="text" id="acCo" placeholder="SUV / Sedan..."/></div>
+            <div class="af-field"><label>Category</label><select id="acCt"><option>fullwrap</option><option>colour</option><option>partial</option><option>ppf</option><option>fleet</option></select></div>
+            <div class="af-field"><label>Status</label><select id="acSt"><option>Available</option><option>In Progress</option><option>Completed</option></select></div>
+            <div class="af-field full"><label>Image URL</label><input type="text" id="acIm" placeholder="https://..."/></div>
+            <div class="af-field full"><label>Project Description</label><textarea id="acDe" rows="3" placeholder="Brief description of the wrap project..."></textarea></div>
+          </div>
+          <button class="btn-solid" style="margin-top:4px" onclick="addCar()">Add to Portfolio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/254700123456" class="fab" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12.04 2C6.58 2 6.13 6.45 2.13 11.91c0 1.75.46 3.38 1.26 4.79L2 22l5.46-1.37c1.35.71 2.89 1.11 4.54 1.11 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.52 14.13c-.23.63-1.35 1.23-1.84 1.27-.48.05-.94.22-3.18-.67-2.67-1.07-4.37-3.77-4.5-3.95-.14-.18-1.1-1.47-1.1-2.81s.7-1.99.95-2.27c.23-.26.5-.33.67-.33l.48.02c.15.01.36-.06.56.43.21.5.7 1.72.76 1.84.06.13.1.28.02.45-.08.17-.12.28-.24.43-.12.15-.25.33-.36.44-.12.12-.24.25-.1.49.14.24.62 1.02 1.33 1.65.91.81 1.68 1.06 1.92 1.18.24.12.38.1.52-.06.14-.17.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.17 1.2z"/></svg>
+</a>
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── WRAP PROJECT DATA ───
+let cars=[
+  {id:1,make:'Mercedes-Benz',model:'GLE 350',year:2022,price:85000,body:'Full Body Wrap',fuel:'Matte Black',mileage:3,transmission:'3M 1080',engine:'Matte',color:'Matte Black',category:'fullwrap',status:'Available',description:'Stunning full body matte black transformation on a 2022 GLE 350. Applied with 3M 1080 Series vinyl, this project features seamless panel alignment, wrapped door handles and mirror caps. 2-year material warranty included.',images:['https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80','https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800&q=80','https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80']},
+  {id:2,make:'Subaru',model:'WRX STI',year:2021,price:42000,body:'Colour Change',fuel:'Satin Chrome Blue',mileage:2,transmission:'KPMF',engine:'Satin',color:'Satin Chrome Blue',category:'colour',status:'Available',description:'Head-turning satin chrome blue colour change on a WRX STI. KPMF K75400 Series — satin finish with subtle metallic depth. Fully reversible, preserving the original paintwork underneath.',images:['https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80','https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80']},
+  {id:3,make:'Range Rover',model:'Sport HSE',year:2023,price:55000,body:'Partial Wrap',fuel:'Carbon Fibre',mileage:1,transmission:'3M',engine:'Gloss',color:'Carbon Fibre + Gloss Black',category:'partial',status:'Available',description:'Roof, bonnet and mirror cap partial wrap in 3M carbon fibre effect vinyl. Black-on-black contrast with factory Santorini Black base — a subtle but powerful upgrade.',images:['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80']},
+  {id:4,make:'Toyota',model:'Land Cruiser V8',year:2022,price:95000,body:'Full Body Wrap',fuel:'Army Green Matte',mileage:4,transmission:'Avery Dennison',engine:'Matte',color:'Military Olive Matte',category:'fullwrap',status:'Available',description:'Military olive matte full wrap on a Land Cruiser V8. Avery Dennison Supreme Wrapping Film — rugged aesthetic perfectly matched to the LC\'s character. All seams heat-sealed and tucked for a factory look.',images:['https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80','https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&q=80']},
+  {id:5,make:'BMW',model:'M3 Competition',year:2023,price:78000,body:'Full Body Wrap',fuel:'Gloss Red',mileage:3,transmission:'3M 1080',engine:'Gloss',color:'Gloss Dragon Fire Red',category:'colour',status:'Available',description:'Bold gloss Dragon Fire Red full wrap on a BMW M3. 3M 1080 Series — ultra-gloss finish that rivals a factory respray. Complete with wrapped kidney grille surrounds and brake caliper accents.',images:['https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80']},
+  {id:6,make:'Isuzu',model:'D-Max Fleet (×6)',year:2021,price:180000,body:'Fleet Branding',fuel:'Full Livery',mileage:6,transmission:'Oracal',engine:'Custom Print',color:'Corporate Red & White',category:'fleet',status:'Available',description:'Corporate fleet branding for 6 Isuzu D-Max pickups. Full vehicle livery including bonnet, doors, tailgate and roof panels. Oracal 3640 premium cast vinyl with UV laminate — 5-year outdoor durability.',images:['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80']},
+  {id:7,make:'Porsche',model:'Cayenne GTS',year:2023,price:120000,body:'PPF',fuel:'Full Front PPF',mileage:5,transmission:'STEK DYNOshield',engine:'Invisible',color:'Clear PPF',category:'ppf',status:'Available',description:'Full front paint protection film on a Porsche Cayenne GTS. STEK DYNOshield — self-healing TPU film covering the full bonnet, front bumper, headlights, mirrors and A-pillars. Invisible protection with a gloss enhancing finish.',images:['https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=800&q=80']},
+  {id:8,make:'Toyota',model:'Vitz',year:2020,price:28000,body:'Colour Change',fuel:'Gloss White to Black',mileage:2,transmission:'3M 1080',engine:'Gloss',color:'Gloss Satin Black',category:'colour',status:'Available',description:'Affordable gloss to satin black colour change on a Toyota Vitz. Proves that premium wrapping isn\'t just for luxury cars — this Vitz turned out exceptional. Great entry-level transformation.',images:['https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800&q=80']},
+  {id:9,make:'Mercedes-Benz',model:'C200 AMG',year:2022,price:65000,body:'Full Body Wrap',fuel:'Rose Gold Chrome',mileage:3,transmission:'KPMF',engine:'Chrome',color:'Rose Gold Chrome',category:'fullwrap',status:'Available',description:'Striking rose gold chrome full wrap on a C200 AMG Line. KPMF K75500 Series mirror chrome vinyl — one of our most eye-catching builds. Requires precise installation due to chrome\'s sensitivity; perfectly executed.',images:['https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80']},
+  {id:10,make:'Nissan',model:'Navara NP300',year:2021,price:38000,body:'Partial Wrap',fuel:'Bonnet & Roof',mileage:1,transmission:'Avery Dennison',engine:'Matte',color:'Matte Charcoal',category:'partial',status:'Available',description:'Matte charcoal bonnet and roof wrap on a Nissan Navara. Avery Dennison 1005 — excellent durability for exposed panels on a workhorse pickup. Protective and sharp.',images:['https://images.unsplash.com/photo-1567818735868-e71b99932e29?w=800&q=80']},
+  {id:11,make:'Lamborghini',model:'Urus',year:2023,price:145000,body:'Full Body Wrap',fuel:'Gloss Ice White',mileage:4,transmission:'3M 2080',engine:'Gloss',color:'Gloss Ice White',category:'fullwrap',status:'Available',description:'Full body gloss ice white transformation on a Lamborghini Urus. 3M 2080 Series premium wrap — applied over the factory Nero Noctis black. A dramatic reversal that completely transformed the car\'s character.',images:['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80']},
+  {id:12,make:'Toyota',model:'HiAce Van Fleet (×4)',year:2022,price:95000,body:'Fleet Branding',fuel:'Full Livery',mileage:4,transmission:'Oracal',engine:'Custom Print',color:'Blue & White Livery',category:'fleet',status:'Available',description:'Logistics company fleet branding on 4 Toyota HiAce vans. Bold blue and white corporate livery with logo, contact details and QR codes. High-tack cast vinyl with UV protective laminate.',images:['https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&q=80']},
+];
+let filtered=[...cars],shown=9,curCat='all',activeCar=null;
+let orders=[],enquiries=[],log=[];
+
+// ─── QUOTE ESTIMATOR DATA ───
+const basePrices={
+  small:{partial:12000,colour:32000,full:40000,ppf:38000,fleet:28000},
+  medium:{partial:18000,colour:45000,full:60000,ppf:55000,fleet:38000},
+  large:{partial:24000,colour:58000,full:80000,ppf:70000,fleet:52000},
+  xlarge:{partial:35000,colour:85000,full:120000,ppf:100000,fleet:75000}
+};
+const finishPremium={matte:0,gloss:0,satin:5000,chrome:18000,carbon:12000,custom:20000};
+const durations={partial:'1 Day',colour:'2–3 Days',full:'3–4 Days',ppf:'2–3 Days',fleet:'1–5 Days'};
+
+// ─── BOOT ───
+window.addEventListener('load',()=>{
+  setTimeout(()=>{document.getElementById('loader').classList.add('off');render(filtered.slice(0,9));updateKPIs();doCalc();},2400);
+});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('stuck',scrollY>40);});
+const tt=document.getElementById('tickerTrack');if(tt)tt.innerHTML+=tt.innerHTML;
+
+function gs(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('on');}
+
+// ─── HERO ───
+function swapHero(el,label){
+  document.querySelectorAll('.hero-thumbs-v img').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  const hi=document.getElementById('heroImg');
+  hi.style.opacity='0';
+  setTimeout(()=>{hi.src=el.src.replace('w=200','w=1000');hi.style.opacity='1';hi.style.transition='opacity .3s';},220);
+  document.getElementById('heroBadgeVal').textContent=label;
+}
+
+// ─── GALLERY ───
+function render(list){
+  const g=document.getElementById('carsGrid');g.innerHTML='';
+  if(!list.length){g.innerHTML='<p style="color:var(--dim);text-align:center;padding:60px 20px;grid-column:1/-1;font-family:var(--ff-mono);font-size:.78rem">No projects match your selection.</p>';return;}
+  list.forEach((c,i)=>{
+    const el=document.createElement('div');el.className='car-card';
+    el.style.cssText=`animation:fadeUp .4s var(--ease) both ${i*.05}s`;
+    const sc=c.status==='Available'?'s-av':c.status==='In Progress'?'s-rs':'s-so';
+    el.innerHTML=`
+      <div class="card-img">
+        <img src="${c.images[0]}" alt="${c.make} ${c.model}" loading="lazy"/>
+        <div class="card-status ${sc}">${c.status}</div>
+        <div class="card-year">${c.year}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-make">${c.body}</div>
+        <div class="card-model">${c.make} ${c.model}</div>
+        <div class="card-specs">
+          <span class="card-spec">${c.engine}</span>
+          <span class="card-spec">${c.transmission}</span>
+          <span class="card-spec">${c.mileage}d turnaround</span>
+          <span class="card-spec">${c.color.split(' ').slice(0,2).join(' ')}</span>
+        </div>
+        <div class="card-footer">
+          <div>
+            <div class="card-price">KSH ${c.price.toLocaleString()}</div>
+            <div class="card-monthly">${c.fuel}</div>
+          </div>
+          <div class="card-btns">
+            <button class="c-btn-v" onclick="openCar(${c.id})">View</button>
+            <button class="c-btn-w" onclick="qe(${c.id},event)">WA</button>
+          </div>
+        </div>
+      </div>`;
+    g.appendChild(el);
+  });
+}
+function filterTab(btn,cat){
+  document.querySelectorAll('.ftag').forEach(f=>f.classList.remove('on'));btn.classList.add('on');
+  curCat=cat;shown=9;filtered=cat==='all'?[...cars]:cars.filter(c=>c.category===cat);render(filtered.slice(0,9));
+}
+function runSearch(){
+  const vt=document.getElementById('fMake').value,wt=document.getElementById('fBody').value;
+  const fn=document.getElementById('fPrice').value;
+  let res=cars.filter(c=>{
+    if(wt){const map={'Full Body Wrap':'fullwrap','Partial Wrap':'partial','Colour Change':'colour','Paint Protection Film':'ppf','Roof Wrap':'partial','Fleet Branding':'fleet'};if(map[wt]&&c.category!==map[wt])return false;}
+    if(fn&&!c.engine.toLowerCase().includes(fn.toLowerCase())&&c.fuel.toLowerCase().indexOf(fn.toLowerCase())<0){}
+    return true;
+  });
+  // Estimate based on selections
+  const vMap={'Sedan':'small','SUV / Crossover':'medium','Pickup / Truck':'large','Hatchback':'small','Van / Minibus':'xlarge','Sports Car':'medium'};
+  const wMap={'Full Body Wrap':'full','Partial Wrap':'partial','Colour Change':'colour','Paint Protection Film':'ppf','Roof Wrap':'partial','Fleet Branding':'fleet'};
+  const fMap={'matte':0,'gloss':0,'satin':5000,'chrome':18000,'carbon':12000,'custom':20000};
+  const vs=vMap[vt]||'medium',ws=wMap[wt]||'full',fp=fMap[fn]||0;
+  if(vs&&ws&&basePrices[vs]){
+    const est=basePrices[vs][ws]+fp;
+    toast(`Estimated: KSH ${est.toLocaleString()} — ${durations[ws]||'2–4 Days'}`);
+  } else {
+    toast(`${res.length} project${res.length!==1?'s':''} available.`);
+  }
+  filtered=res;shown=9;render(filtered.slice(0,9));gs('gallery');
+}
+function loadMore(){shown+=6;render(filtered.slice(0,shown));}
+
+// ─── PROJECT MODAL ───
+function openCar(id){
+  activeCar=cars.find(c=>c.id===id);if(!activeCar)return;
+  document.getElementById('mImg').src=activeCar.images[0];
+  document.getElementById('mTitle').textContent=`${activeCar.year} ${activeCar.make} ${activeCar.model} — ${activeCar.body}`;
+  document.getElementById('mPrice').textContent='KSH '+activeCar.price.toLocaleString('en-KE');
+  const sc=activeCar.status==='Available'?'s-av':activeCar.status==='In Progress'?'s-rs':'s-so';
+  document.getElementById('mTags').innerHTML=`<span class="card-status ${sc}" style="position:static;display:inline-block">${activeCar.status}</span><span class="card-year" style="position:static;display:inline-block">${activeCar.year}</span>`;
+  document.getElementById('mSpecs').innerHTML=`
+    <div class="spec-box"><div class="spec-k">Wrap Type</div><div class="spec-v">${activeCar.body}</div></div>
+    <div class="spec-box"><div class="spec-k">Finish</div><div class="spec-v">${activeCar.engine}</div></div>
+    <div class="spec-box"><div class="spec-k">Vinyl Brand</div><div class="spec-v">${activeCar.transmission}</div></div>
+    <div class="spec-box"><div class="spec-k">Duration</div><div class="spec-v">${activeCar.mileage} Day${activeCar.mileage>1?'s':''}</div></div>
+    <div class="spec-box"><div class="spec-k">Colour</div><div class="spec-v">${activeCar.color}</div></div>
+    <div class="spec-box"><div class="spec-k">Vehicle</div><div class="spec-v">${activeCar.make} ${activeCar.model}</div></div>`;
+  document.getElementById('mDesc').textContent=activeCar.description;
+  const ts=document.getElementById('mThumbs');ts.innerHTML='';
+  activeCar.images.forEach((img,i)=>{const t=document.createElement('img');t.src=img;if(i===0)t.classList.add('on');t.onclick=()=>{document.getElementById('mImg').src=img;ts.querySelectorAll('img').forEach(x=>x.classList.remove('on'));t.classList.add('on');};ts.appendChild(t);});
+  document.getElementById('carOverlay').classList.add('on');document.body.style.overflow='hidden';
+}
+function closeCar(){document.getElementById('carOverlay').classList.remove('on');document.body.style.overflow='';}
+
+// ─── BOOKING ───
+function openPurchase(){
+  if(!activeCar)return;if(activeCar.status==='Completed'){toast('This project is a portfolio showcase.','err');return;}
+  closeCar();resetP();document.getElementById('purOverlay').classList.add('on');
+}
+function closePur(){document.getElementById('purOverlay').classList.remove('on');document.body.style.overflow='';resetP();}
+function resetP(){
+  ['ps1','ps2','ps3'].forEach((id,i)=>{document.getElementById(id).classList.toggle('hidden',i!==0);});
+  document.getElementById('si1').className='step-node act';document.getElementById('si2').className='step-node';document.getElementById('si3').className='step-node';
+  ['bName','bPhone','bEmail','bID'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+}
+function goP2(){
+  const n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim(),id=document.getElementById('bID').value.trim();
+  if(!n||!p||!id){toast('Fill all required fields.','err');return;}
+  if(!/^0[7][0-9]{8}$/.test(p)&&!/^\+254[7][0-9]{8}$/.test(p)){toast('Enter a valid Kenyan phone number.','err');return;}
+  document.getElementById('ps1').classList.add('hidden');document.getElementById('ps2').classList.remove('hidden');
+  document.getElementById('si1').className='step-node done';document.getElementById('si2').className='step-node act';
+  document.querySelectorAll('input[name="pay"]').forEach(r=>r.addEventListener('change',()=>{
+    ['piM','piB','piF'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+    const v=document.querySelector('input[name="pay"]:checked')?.value;
+    if(v==='mpesa')document.getElementById('piM').classList.remove('hidden');
+    if(v==='bank')document.getElementById('piB').classList.remove('hidden');
+    if(v==='deposit')document.getElementById('piF').classList.remove('hidden');
+  }));
+}
+function backP1(){
+  document.getElementById('ps2').classList.add('hidden');document.getElementById('ps1').classList.remove('hidden');
+  document.getElementById('si2').className='step-node';document.getElementById('si1').className='step-node act';
+}
+function goP3(){
+  const pay=document.querySelector('input[name="pay"]:checked');if(!pay){toast('Select a payment method.','err');return;}
+  const n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim();
+  const ref='WND-'+Date.now().toString().slice(-6);
+  orders.push({ref,customer:n,phone:p,car:`${activeCar.make} ${activeCar.model} — ${activeCar.body}`,payment:pay.value,status:'Confirmed',date:new Date().toLocaleDateString('en-KE'),price:activeCar.price});
+  const idx=cars.findIndex(c=>c.id===activeCar.id);if(idx>-1)cars[idx].status='In Progress';
+  addLog(`Booking ${ref} — ${n} booked ${activeCar.body} on ${activeCar.make} ${activeCar.model}`);updateKPIs();
+  document.getElementById('ps2').classList.add('hidden');document.getElementById('ps3').classList.remove('hidden');
+  document.getElementById('si2').className='step-node done';document.getElementById('si3').className='step-node act';
+  document.getElementById('confMsg').textContent=`Thank you, ${n}. Your booking for the ${activeCar.body} on your ${activeCar.make} ${activeCar.model} — KSH ${activeCar.price.toLocaleString()} — has been confirmed.`;
+  document.getElementById('ordRef').textContent='Reference: '+ref;
+}
+
+// ─── ENQUIRY ───
+function openEnq(){if(!activeCar)return;closeCar();document.getElementById('enqLine').textContent=`${activeCar.year} ${activeCar.make} ${activeCar.model} — ${activeCar.body} — KSH ${activeCar.price.toLocaleString()}`;document.getElementById('enqOverlay').classList.add('on');}
+function closeEnq(){document.getElementById('enqOverlay').classList.remove('on');document.body.style.overflow='';}
+function qe(id,e){e.stopPropagation();activeCar=cars.find(c=>c.id===id);openEnq();}
+function submitEnq(){
+  const n=document.getElementById('eqName').value.trim(),p=document.getElementById('eqPhone').value.trim();
+  if(!n||!p){toast('Provide your name and phone.','err');return;}
+  enquiries.push({name:n,phone:p,email:document.getElementById('eqEmail').value,car:activeCar?`${activeCar.make} ${activeCar.model}`:'General',message:document.getElementById('eqMsg').value||'General enquiry.',date:new Date().toLocaleDateString('en-KE')});
+  addLog(`Enquiry from ${n} — ${activeCar?.make} ${activeCar?.model}`);updateKPIs();
+  closeEnq();toast(`Enquiry sent. We'll call ${p} shortly.`);
+  ['eqName','eqPhone','eqEmail','eqMsg'].forEach(id=>document.getElementById(id).value='');
+}
+function waEnq(){if(!activeCar)return;window.open(`https://wa.me/254700123456?text=${encodeURIComponent(`Hello Wrap N Drive. I'm interested in a ${activeCar.body} for my ${activeCar.make} ${activeCar.model}. Wrap: ${activeCar.color}. Price listed: KSH ${activeCar.price.toLocaleString()}. Is this available?`)}`);}
+
+// ─── QUOTE ESTIMATOR ───
+function doCalc(){
+  const vs=document.getElementById('cP').value||'medium';
+  const ws=document.getElementById('cD').value||'colour';
+  const fn=document.getElementById('cT').value||'matte';
+  const qty=Math.max(1,parseInt(document.getElementById('cR').value)||1);
+  const base=basePrices[vs]?.[ws]||0;
+  const fp=finishPremium[fn]||0;
+  const total=(base+fp)*qty;
+  const dur=durations[ws]||'2–3 Days';
+  const f=n=>'KSH '+Math.round(n).toLocaleString('en-KE');
+  document.getElementById('rL').textContent=f(base);
+  document.getElementById('rM').textContent=f(total);
+  document.getElementById('rI').textContent=fp>0?f(fp*qty):'Included';
+  document.getElementById('rT').textContent=qty>1?`${dur} (per vehicle)`:dur;
+}
+
+// ─── CONTACT ───
+function submitContact(){
+  const n=document.getElementById('cfN').value.trim(),p=document.getElementById('cfP').value.trim();
+  if(!n||!p){toast('Provide your name and phone.','err');return;}
+  addLog(`Contact form — ${n}`);toast("Message sent. We'll be in touch.");
+  ['cfN','cfP','cfE','cfM'].forEach(id=>document.getElementById(id).value='');
+}
+
+// ─── ADMIN ───
+function openAdmin(){document.getElementById('adminOv').classList.add('on');document.body.style.overflow='hidden';updateKPIs();}
+function closeAdmin(){document.getElementById('adminOv').classList.remove('on');document.body.style.overflow='';}
+function aPane(name,btn){
+  document.querySelectorAll('.a-pane').forEach(p=>p.classList.add('hidden'));
+  document.querySelectorAll('.a-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('ap-'+name).classList.remove('hidden');btn.classList.add('on');
+  if(name==='inventory')renderInv();if(name==='orders')renderOrd();if(name==='enquiries')renderEnqTbl();
+}
+function updateKPIs(){
+  document.getElementById('kS').textContent=cars.filter(c=>c.status==='Available').length;
+  document.getElementById('kO').textContent=orders.length;document.getElementById('kE').textContent=enquiries.length;
+  document.getElementById('kR').textContent='KSH '+orders.reduce((s,o)=>s+(o.price||0),0).toLocaleString('en-KE');
+  renderLog();
+}
+function addLog(t){log.unshift({t,time:new Date().toLocaleTimeString('en-KE')});if(log.length>10)log.pop();}
+function renderLog(){
+  const el=document.getElementById('actFeed');
+  if(!log.length){el.innerHTML='<p style="font-size:.78rem;color:var(--dim)">No activity yet.</p>';return;}
+  el.innerHTML=log.map(l=>`<div class="act-item"><div class="act-dot"></div><span>${l.t}</span><span class="act-t">${l.time}</span></div>`).join('');
+}
+function renderInv(){
+  document.getElementById('invB').innerHTML=cars.map(c=>`<tr>
+    <td style="font-family:var(--ff-mono);color:var(--dim)">${c.id}</td>
+    <td><strong style="color:var(--white)">${c.make} ${c.model}</strong><br><small style="color:var(--dim)">${c.body}</small></td>
+    <td>${c.year}</td><td>KSH ${c.price.toLocaleString()}</td>
+    <td><span class="s-pill ${c.status==='Available'?'sp-av':c.status==='In Progress'?'sp-rs':'sp-so'}">${c.status}</span></td>
+    <td><button class="tbl-btn" onclick="cycleS(${c.id})">Edit</button><button class="tbl-btn del" onclick="delC(${c.id})">Delete</button></td>
+  </tr>`).join('');
+}
+function renderOrd(){
+  const b=document.getElementById('ordB');
+  b.innerHTML=!orders.length?`<tr><td colspan="6" style="text-align:center;color:var(--dim);padding:28px">No bookings yet.</td></tr>`:
+    orders.map(o=>`<tr><td style="font-family:var(--ff-mono)">${o.ref}</td><td>${o.customer}<br><small style="color:var(--dim)">${o.phone}</small></td><td>${o.car}</td><td>${o.payment}</td><td><span class="s-pill sp-av">${o.status}</span></td><td style="font-family:var(--ff-mono);font-size:.7rem">${o.date}</td></tr>`).join('');
+}
+function renderEnqTbl(){
+  const b=document.getElementById('enqB');
+  b.innerHTML=!enquiries.length?`<tr><td colspan="5" style="text-align:center;color:var(--dim);padding:28px">No enquiries yet.</td></tr>`:
+    enquiries.map(e=>`<tr><td>${e.name}</td><td style="font-family:var(--ff-mono)">${e.phone}</td><td>${e.car}</td><td style="color:var(--dim)">${e.message.substring(0,50)}...</td><td style="font-family:var(--ff-mono);font-size:.7rem">${e.date}</td></tr>`).join('');
+}
+function cycleS(id){
+  const c=cars.find(x=>x.id===id);if(!c)return;
+  const s=['Available','In Progress','Completed'];c.status=s[(s.indexOf(c.status)+1)%3];
+  addLog(`Status: ${c.make} ${c.model} → ${c.status}`);updateKPIs();renderInv();
+  filtered=cars.filter(c=>curCat==='all'||c.category===curCat);render(filtered.slice(0,shown));
+  toast(`${c.make} ${c.model} → ${c.status}`);
+}
+function delC(id){
+  const c=cars.find(x=>x.id===id);if(!c)return;
+  if(!confirm(`Remove ${c.make} ${c.model} from portfolio?`))return;
+  cars=cars.filter(x=>x.id!==id);filtered=filtered.filter(x=>x.id!==id);
+  addLog(`Removed: ${c.make} ${c.model}`);updateKPIs();renderInv();render(filtered.slice(0,shown));toast(`${c.make} ${c.model} removed.`);
+}
+function addCar(){
+  const mk=document.getElementById('acMk').value.trim(),mo=document.getElementById('acMo').value.trim();
+  const yr=+document.getElementById('acYr').value,pr=+document.getElementById('acPr').value;
+  if(!mk||!mo||!yr||!pr){toast('Fill all required fields.','err');return;}
+  const nc={id:Math.max(...cars.map(c=>c.id))+1,make:mk,model:mo,year:yr,price:pr,
+    body:document.getElementById('acBd').value,fuel:document.getElementById('acCo').value||'Custom Finish',
+    mileage:+document.getElementById('acMi').value||2,transmission:document.getElementById('acTr').value,
+    engine:document.getElementById('acFu').value||'Custom',color:document.getElementById('acEn').value||'Custom',
+    category:document.getElementById('acCt').value,status:document.getElementById('acSt').value,
+    description:document.getElementById('acDe').value||`${yr} ${mk} ${mo} — ${document.getElementById('acBd').value}.`,
+    images:[document.getElementById('acIm').value||'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80']};
+  cars.push(nc);filtered=[...cars];addLog(`Added: ${yr} ${mk} ${mo}`);updateKPIs();render(filtered.slice(0,shown));
+  toast(`${mk} ${mo} added to portfolio.`);
+  ['acMk','acMo','acYr','acPr','acMi','acEn','acCo','acIm','acDe'].forEach(id=>document.getElementById(id).value='');
+}
+
+// ─── TOAST ───
+function toast(msg,type=''){
+  const el=document.getElementById('toast');el.textContent=msg;el.className='toast'+(type?' '+type:'');
+  el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3200);
+}
+
+// ─── OVERLAYS ───
+['carOverlay','purOverlay','enqOverlay'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id){e.target.classList.remove('on');document.body.style.overflow='';}});
+});
+document.getElementById('adminOv').addEventListener('click',e=>{if(e.target===document.getElementById('adminOv'))closeAdmin();});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){['carOverlay','purOverlay','enqOverlay'].forEach(id=>document.getElementById(id).classList.remove('on'));closeAdmin();document.getElementById('mobMenu').classList.remove('on');document.body.style.overflow='';}
+});
+
+// ─── SCROLL ANIM ───
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}}),{threshold:.08});
+document.querySelectorAll('.svc-card,.t-card,.kpi,.hstat').forEach(el=>{
+  el.style.cssText+=';opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease)';obs.observe(el);
+});
+</script>
+</body>
+</html>
